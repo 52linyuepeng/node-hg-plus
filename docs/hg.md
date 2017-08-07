@@ -3,7 +3,8 @@
 * [Hg Instance](#hg-instance)
 * [Hg clone](#hg-clone)
 * [Hg create](#hg-create)
-* [Hg version](#hg-version) 
+* [Hg version](#hg-version)
+* [Hg getRepo](#hg-getRepo)
 * [Gitify the repo youre currently in](#gitify-the-repo-youre-currently-in)
 
 ### Hg Instance
@@ -53,11 +54,11 @@ Clones a Mercurial repository.
 ```javascript
 const Hg = require('hg-plus')();
 
-let to = { 
-	url: 'http://hostname.com/my/repository/url', 
-	username: 'me@host.com', 
-	password: 'secret', 
-	path: 'path/to/my/new/repo' 
+let to = {
+	url: 'http://hostname.com/my/repository/url',
+	username: 'me@host.com',
+	password: 'secret',
+	path: 'path/to/my/new/repo'
 };
 
 
@@ -67,24 +68,24 @@ let fromURL = 'http://hostname.com/the/repo/i/want/to/clone';
 let repo1 = await Hg.clone(fromURL, to);
 
 // From a repo object
-let fromObj = { 
-	url: 'http://hostname.com/the/repo/i/want/to/clone', 
-	username: 'me@host.com', 
-	password: 'secret', 
+let fromObj = {
+	url: 'http://hostname.com/the/repo/i/want/to/clone',
+	username: 'me@host.com',
+	password: 'secret',
 };
 
 let repo2 = await Hg.clone(fromObj, to);
 
 // From a list of repo urls/objects
 let fromArray = [
-{ 
-	url: 'http://hostname.com/the/repo/i/want/to/clone1', 
-	username: 'me@host.com', 
-	password: 'secret', 
-},{ 
-	url: 'http://hostname.com/the/repo/i/want/to/clone2', 
-	username: 'me@host.com', 
-	password: 'secret', 
+{
+	url: 'http://hostname.com/the/repo/i/want/to/clone1',
+	username: 'me@host.com',
+	password: 'secret',
+},{
+	url: 'http://hostname.com/the/repo/i/want/to/clone2',
+	username: 'me@host.com',
+	password: 'secret',
 }];
 
 let repo3 = await Hg.clone(fromArray, to);
@@ -123,11 +124,11 @@ const repo = await Hg.create();
 await repo.init();
 
 // With an object
-let to = { 
-	url: 'http://hostname.com/my/repository/url', 
-	username: 'me@host.com', 
-	password: 'secret', 
-	path: 'path/to/my/new/repo' 
+let to = {
+	url: 'http://hostname.com/my/repository/url',
+	username: 'me@host.com',
+	password: 'secret',
+	path: 'path/to/my/new/repo'
 };
 
 let repo = await Hg.create(to);
@@ -143,11 +144,11 @@ Get a cloned or created Mercurial repository.
 
 | Argument              | Description   | Type     | Required | Default           |
 |-----------------------|---------------|----------|----------|-------------------|
-| options.from            |               | Object   | No       |                   |
-| options.from.url        |               | String   | No       | null              |
-| options.from.username   |               | String   | No       | null              |
-| options.from.password   |               | String   | No       | null              |
-| options.from.path       |               | String   | No       | Current Directory |
+| options.from          |               | Object   | No       |                   |
+| options.from.url      |               | String   | No       | null              |
+| options.from.username |               | String   | No       | null              |
+| options.from.password |               | String   | No       | null              |
+| options.from.path     |               | String   | No       | Current Directory |
 
 | Returns                          | Description      |
 |----------------------------------|------------------|
@@ -156,9 +157,9 @@ Get a cloned or created Mercurial repository.
 ```javascript
 const repo = Hg.getRepo({
 	url: 'http://hostname.com/my/repository/url',
-   	username: 'me@host.com',
-   	password: 'secret',
-    path: 'my/local/cloned/repo'
+	username: 'me@host.com',
+	password: 'secret',
+	path: 'my/local/cloned/repo'
 })
 await repo.pull()
 ```

@@ -27,8 +27,6 @@ class HgRepo {
     this.path = path || Path.join(process.cwd(), this.name);
     this.pythonPath = pythonPath;
 
-    if (Fs.pathExistsSync(this.path)) throw new Error(`Repository already exists at this path: ${this.path}`);
-
     Fs.ensureDirSync(this.path);
   }
 
